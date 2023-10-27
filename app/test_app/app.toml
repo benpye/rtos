@@ -1,0 +1,23 @@
+[target]
+device = "qemu-rv32-virt"
+clock = 10000000
+
+[kernel.memory]
+data = 1024
+stack = 1024
+
+[tasks.idle]
+boot = true
+priority = 255
+memory = { data = 0, stack = 0 }
+
+[tasks.test_runner]
+boot = true
+priority = 0
+memory = { data = 16, stack = 2032 }
+peripherals = [ "uart0", "rtc" ]
+
+[tasks.test_helper]
+boot = true
+priority = 1
+memory = { data = 8, stack = 2040 }

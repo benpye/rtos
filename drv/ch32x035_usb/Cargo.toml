@@ -1,0 +1,15 @@
+[package]
+name = "ch32x035_usb"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ch32x0 = { workspace = true, features = [ "ch32x035" ] }
+spin.workspace = true
+usb-device.workspace = true
+vcell.workspace = true
+
+[lints]
+workspace = true

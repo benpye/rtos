@@ -1,0 +1,103 @@
+ENTRY(_start.kernel)
+
+SECTIONS
+{
+    .text :
+    {
+        _text_start = .;
+        *(.text._start.kernel)
+        *(.text .text.*)
+    } > rom
+
+    .rodata :
+    {
+        *(.rodata .rodata.*)
+        _text_end = .;
+    } > rom
+
+    .stack.kernel ALIGN({{ kernel.memory.stack }}) :
+    {
+        _stack_start.kernel = .;
+        . = . + {{ kernel.memory.stack }};
+        _stack_end.kernel = .;
+    } > ram
+
+    .data.kernel ALIGN({{ kernel.memory.data }}) :
+    {
+        _data_start.kernel = .;
+        *(.data.*.kernel .data.*.kernel.*)
+        . = ALIGN(4);
+        _data_end.kernel = .;
+    } > ram AT> rom
+
+    _data_load.kernel = LOADADDR(.data.kernel);
+
+    .bss.kernel (NOLOAD) :
+    {
+        _bss_start.kernel = .;
+        *(.bss.*.kernel .bss.*.kernel.*)
+        . = ALIGN(4);
+        _bss_end.kernel = .;
+    } > ram
+
+    {{ #each tasks as |task| }}
+
+    .stack.{{ task.name }} ({{ task.base_address }}) :
+    {
+        _stack_start.{{ task.name }} = .;
+        . = . + {{ task.memory_config.stack }};
+        _stack_end.{{ task.name }} = .;
+    } > ram
+
+    .data.{{ task.name }} :
+    {
+        _data_start.{{ task.name }} = .;
+        *(.data.*.{{ task.name }} .data.*.{{ task.name }}.*)
+        . = ALIGN(4);
+        _data_end.{{ task.name }} = .;
+    } > ram AT> rom
+
+    _data_load.{{ task.name }} = LOADADDR(.data.{{ task.name }});
+
+    .bss.{{ task.name }} (NOLOAD) :
+    {
+        _bss_start.{{ task.name }} = .;
+        *(.bss.*.{{ task.name }} .bss.*.{{ task.name }}.*)
+        . = ALIGN(4);
+        _bss_end.{{ task.name }} = .;
+    } > ram
+
+    {{ /each }}
+
+    .note.rtos.feature (INFO) :
+    {
+        *(.note.rtos.feature)
+    }
+
+    .rtos.must_optimise :
+    {
+        _rtos_must_optimise_start = .;
+        *(.rtos.must_optimise)
+        _rtos_must_optimise_end = .;
+        ASSERT(_rtos_must_optimise_start == _rtos_must_optimise_end, "Must optimise section should not be present.");
+    }
+
+    .stack_sizes (INFO) :
+    {
+        KEEP(*(.stack_sizes));
+    }
+}
+
+ASSERT(TASK_TABLE.kernel >= _bss_start.kernel, "TASK_TABLE should be in .bss section");
+ASSERT(TASK_TABLE.kernel < _bss_end.kernel, "TASK_TABLE should be in .bss section");
+
+ASSERT({{ kernel.memory.data }} >= (_bss_end.kernel - _data_start.kernel), "kernel data exceeds size");
+
+{{ #each tasks as |task| }}
+ASSERT({{ task.memory_config.data }} >= (_bss_end.{{ task.name }} - _data_start.{{ task.name }}), "task {{ task.name }} data exceeds size");
+PROVIDE(rtos.task.{{ task.name }}.id = {{ @index }});
+{{ /each }}
+
+{{ #each feature_assertions as |assertion| }}
+ASSERT(DEFINED(rtos.feature.{{ assertion }}), "Expected kernel to be configured with {{ assertion }} feature.");
+{{ /each }}

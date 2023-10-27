@@ -1,0 +1,106 @@
+family = "wch_v4c"
+
+[flash]
+base = 0x00000000
+size = 0x20000000
+
+[ram]
+base = 0x20000000
+size = 0x00005000
+
+[peripherals.tim2]
+memory = { base = 0x40000000, size = 0x00000400 }
+interrupts = { tim2up = 38, tim2cc = 51, tim2trg = 52, tim2brk = 53 }
+
+[peripherals.tim3]
+memory = { base = 0x40000400, size = 0x00000400 }
+interrupts = { tim3 = 54 }
+
+[peripherals.wwdg]
+memory = { base = 0x40002C00, size = 0x00000400 }
+interrupts = { wwdg = 16 }
+
+[peripherals.iwdg]
+memory = { base = 0x40003000, size = 0x00000400 }
+
+[peripherals.usart2]
+memory = { base = 0x40004400, size = 0x00000400 }
+interrupts = { usart2 = 39 }
+
+[peripherals.usart3]
+memory = { base = 0x40004800, size = 0x00000400 }
+interrupts = { usart3 = 42 }
+
+[peripherals.usart4]
+memory = { base = 0x40004C00, size = 0x00000400 }
+interrupts = { usart4 = 43 }
+
+[peripherals.i2c]
+memory = { base = 0x40005400, size = 0x00000400 }
+interrupts = { i2c1_ev = 30, i2c1_er = 31 }
+
+[peripherals.pwr]
+memory = { base = 0x40007000, size = 0x00000400 }
+
+[peripherals.afio]
+memory = { base = 0x40010000, size = 0x00000400 }
+
+[peripherals.exti]
+memory = { base = 0x40010400, size = 0x00000400 }
+interrupts = { pvd = 17, exti7_0 = 20, exti15_8 = 40, exti25_16 = 41 }
+
+[peripherals.gpioa]
+memory = { base = 0x40010800, size = 0x00000400 }
+
+[peripherals.gpiob]
+memory = { base = 0x40010C00, size = 0x00000400 }
+
+[peripherals.gpioc]
+memory = { base = 0x40011000, size = 0x00000400 }
+
+[peripherals.adc]
+memory = { base = 0x40012400, size = 0x00000400 }
+interrupts = { adc1 = 29 }
+
+[peripherals.tim1]
+memory = { base = 0x40012C00, size = 0x00000400 }
+interrupts = { tim1brk = 34, tim1up = 35, tim1trg = 36, tim1cc = 37 }
+
+[peripherals.spi]
+memory = { base = 0x40013000, size = 0x00000400 }
+interrupts = { spi1 = 33 }
+
+[peripherals.usart1]
+memory = { base = 0x40013800, size = 0x00000400 }
+interrupts = { usart1 = 32 }
+
+[peripherals.dma]
+memory = { base = 0x40020000, size = 0x00000400 }
+interrupts = { dma1_ch1 = 22, dma1_ch2 = 23, dma1_ch3 = 24, dma1_ch4 = 25, dma1_ch5 = 26, dma1_ch6 = 27, dma1_ch7 = 28, dma1_ch8 = 44 }
+
+[peripherals.rcc]
+memory = { base = 0x40021000, size = 0x00000400 }
+
+[peripherals.flash]
+memory = { base = 0x40022000, size = 0x00000400 }
+interrupts = { flash = 18 }
+
+[peripherals.usbfs]
+memory = { base = 0x40023400, size = 0x00000400 }
+interrupts = { usbfs = 45, usbfs_wkup = 46 }
+
+[peripherals.opa]
+memory = { base = 0x40026000, size = 0x00000400 }
+interrupts = { opa = 48 }
+
+[peripherals.awu]
+memory = { base = 0x40026400, size = 0x00000400 }
+interrupts = { awu = 21 }
+
+[peripherals.pioc]
+memory = { base = 0x40026C00, size = 0x00000400 }
+interrupts = { pioc = 47 }
+
+[peripherals.usbpd]
+memory = { base = 0x40027000, size = 0x00000400 }
+interrupts = { usbpd = 49, usbpd_wkup = 50 }

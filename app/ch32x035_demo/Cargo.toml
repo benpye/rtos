@@ -1,0 +1,24 @@
+[package]
+name = "ch32x035_demo"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ch32x0 = { workspace = true, features = [ "ch32x035" ] }
+kernel_types.workspace = true
+rtos_macros.workspace = true
+
+[build-dependencies]
+rtos_app_build.workspace = true
+rtos_llvm_plugin.workspace = true
+kernel = { workspace = true, features = [ "family_wch_v4c", "num_tasks_5" ] }
+adb_host.workspace = true
+idle.workspace = true
+usb_keyboard.workspace = true
+ch32x0_afio.workspace = true
+ch32x0_rcc.workspace = true
+
+[lints]
+workspace = true

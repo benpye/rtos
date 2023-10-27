@@ -1,0 +1,65 @@
+block/PLIC:
+  description: Platform-level interrupt controller
+  items:
+  - name: PRIORITY
+    description: 'Interrupt #n source priority'
+    array:
+      len: 1023
+      stride: 4
+      start_index: 1
+    byte_offset: 4
+  - name: PENDING
+    description: Interrupt pending
+    array:
+      len: 32
+      stride: 4
+    byte_offset: 4096
+    access: Read
+    fieldset: PENDING
+  - name: ENABLE
+    description: Interrupt enable
+    array:
+      len: 32
+      stride: 4
+    byte_offset: 8192
+    fieldset: ENABLE
+  - name: THRESHOLD
+    description: 'Interrupt priority threshold for context #n'
+    array:
+      len: 15872
+      stride: 4096
+    byte_offset: 2097152
+  - name: CLAIM
+    description: 'Interrupt claim process for context #n'
+    array:
+      len: 15872
+      stride: 4096
+    byte_offset: 2097156
+    access: Read
+  - name: COMPLETE
+    description: 'Interrupt completion for context #n'
+    array:
+      len: 15872
+      stride: 4096
+    byte_offset: 2097156
+    access: Write
+fieldset/PENDING:
+  description: Interrupt pending register
+  fields:
+  - name: PENDING
+    description: 'Interrupt #n pending'
+    bit_offset: 0
+    bit_size: 1
+    array:
+      len: 32
+      stride: 1
+fieldset/ENABLE:
+  description: Interrupt enable register
+  fields:
+  - name: ENABLE
+    description: 'Interrupt #n enable'
+    bit_offset: 0
+    bit_size: 1
+    array:
+      len: 32
+      stride: 1

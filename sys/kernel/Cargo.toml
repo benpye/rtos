@@ -1,0 +1,50 @@
+[package]
+name = "kernel"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["staticlib"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+kernel_types.workspace = true
+memoffset.workspace = true
+pac_common.workspace = true
+pac_qingke.workspace = true
+pac_riscv.workspace = true
+paste.workspace = true
+riscv.workspace = true
+rtos_macros.workspace = true
+semihosting = { workspace = true, features = [ "stdio" ] }
+seq-macro.workspace = true
+zerocopy.workspace = true
+
+[features]
+riscv_plic = []
+riscv_aclint = []
+riscv_wch_pfic = []
+riscv_wch_systick = []
+family_generic = ["riscv_plic", "riscv_aclint"]
+family_wch_v4c = ["riscv_wch_pfic", "riscv_wch_systick"]
+num_tasks_defined = []
+num_tasks_1 = ["num_tasks_defined"]
+num_tasks_2 = ["num_tasks_defined"]
+num_tasks_3 = ["num_tasks_defined"]
+num_tasks_4 = ["num_tasks_defined"]
+num_tasks_5 = ["num_tasks_defined"]
+num_tasks_6 = ["num_tasks_defined"]
+num_tasks_7 = ["num_tasks_defined"]
+num_tasks_8 = ["num_tasks_defined"]
+num_tasks_9 = ["num_tasks_defined"]
+num_tasks_10 = ["num_tasks_defined"]
+num_tasks_11 = ["num_tasks_defined"]
+num_tasks_12 = ["num_tasks_defined"]
+num_tasks_13 = ["num_tasks_defined"]
+num_tasks_14 = ["num_tasks_defined"]
+num_tasks_15 = ["num_tasks_defined"]
+num_tasks_16 = ["num_tasks_defined"]
+
+[lints]
+workspace = true

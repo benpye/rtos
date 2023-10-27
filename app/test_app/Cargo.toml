@@ -1,0 +1,21 @@
+[package]
+name = "test_app"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+kernel_types.workspace = true
+rtos_macros.workspace = true
+
+[build-dependencies]
+rtos_app_build.workspace = true
+rtos_llvm_plugin.workspace = true
+kernel = { workspace = true, features = [ "family_generic", "num_tasks_3" ] }
+test_runner.workspace = true
+test_helper.workspace = true
+idle.workspace = true
+
+[lints]
+workspace = true

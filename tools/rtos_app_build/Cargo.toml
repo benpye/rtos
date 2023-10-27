@@ -1,0 +1,19 @@
+[package]
+name = "rtos_app_build"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+
+[dependencies]
+handlebars = { version = "4.3.7", features = [ "dir_source" ] }
+prettyplease = "0.2.12"
+quote.workspace = true
+proc-macro2.workspace = true
+serde = { workspace = true, features = ["derive"] }
+syn = { version = "2.0.27" }
+toml = "0.7.6"
+xshell = "0.2.5"
+
+[lints]
+workspace = true

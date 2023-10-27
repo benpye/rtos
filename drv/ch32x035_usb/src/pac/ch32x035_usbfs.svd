@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<device schemaVersion="1.1"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd">
+  <vendor>WCH Ltd.</vendor>
+  <vendorID>WCH</vendorID>
+  <name>CH32X035</name>
+  <version>1.0</version>
+  <description>CH32X035</description>
+  <addressUnitBits>8</addressUnitBits>
+  <width>32</width>
+  <size>0x20</size>
+  <resetValue>0x0</resetValue>
+  <resetMask>0xFFFFFFFF</resetMask>
+  <peripherals>
+    <peripheral>
+      <name>USBFS</name>
+      <description>USB device registers.</description>
+      <groupName>USBFS</groupName>
+      <baseAddress>0x40023400</baseAddress>
+      <addressBlock>
+        <offset>0x00</offset>
+        <size>0x400</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>BASE_CTRL</name>
+          <description>USB control register.</description>
+          <addressOffset>0x00</addressOffset>
+          <size>0x08</size>
+          <access>read-write</access>
+          <resetValue>0x06</resetValue>
+          <fields>
+            <field>
+              <name>DMA_EN</name>
+              <description>Enables DMA for USB, this bit must be set to 1 in normal transfer mode.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CLR_ALL</name>
+              <description>USB FIFO and interrupt flag clear.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RST_SIE</name>
+              <description>USB protocol processor software reset control.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>INT_BUSY</name>
+              <description>USB transfer completion interrupt flag not cleared to zero auto pause enable bit.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SYS_MODE</name>
+              <description>SYS_MODE</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>LOW_SPEED</name>
+              <description>USB low speed enable bit.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>HOST_MODE</name>
+              <description>USB operating mode selection bits.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DEV_CTRL</name>
+          <description>USB device physical port control.</description>
+          <addressOffset>0x01</addressOffset>
+          <size>0x08</size>
+          <resetValue>0x00</resetValue>
+          <fields>
+            <field>
+              <name>PORT_EN</name>
+              <description>USB device physical port enable.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>GP_FLAG</name>
+              <description>General flag bit, user-defined.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>LOW_SPEED</name>
+              <description>USB device port low speed enable.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>DM_PIN</name>
+              <description>Current UDM pin state.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>DP_PIN</name>
+              <description>Current UDP pin state.</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>PD_DIS</name>
+              <description>USB device port UDP/UDM pulldown resistor disable.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>INT_EN</name>
+          <description>USB interrupt enable register.</description>
+          <addressOffset>0x02</addressOffset>
+          <size>0x08</size>
+          <access>read-write</access>
+          <resetValue>0x00</resetValue>
+          <fields>
+            <field>
+              <name>BUS_RST</name>
+              <description>USB bus reset event interrupt.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TRANSFER</name>
+              <description>USB transfer (excluding SETUP transaction) completion interrupt.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SUSPEND</name>
+              <description>USB bus suspend or wakeup event interrupt.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SOF_ACT</name>
+              <description>USB host mode, SOF receive completion interrupt.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>FIFO_OV</name>
+              <description>FIFO overflow interrupt.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DEV_NAK</name>
+              <description>USB device mode, receive NAK interrupt.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DEV_SOF</name>
+              <description>USB device mode, receive SOF interrupt.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DEV_ADDR</name>
+          <description>USB device address register.</description>
+          <addressOffset>0x03</addressOffset>
+          <size>0x08</size>
+          <access>read-write</access>
+          <resetValue>0x00</resetValue>
+          <fields>
+            <field>
+              <name>USB_ADDR</name>
+              <description>USB device address.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>7</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>MIS_ST</name>
+          <description>USB miscellaneous status register.</description>
+          <addressOffset>0x05</addressOffset>
+          <size>0x08</size>
+          <access>read-only</access>
+          <resetValue>0x00</resetValue>
+          <fields>
+            <field>
+              <name>DEV_ATTACH</name>
+              <description>USB device attach status for the port in USB host mode.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DM_LEVEL</name>
+              <description>DM_LEVEL</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SUSPEND</name>
+              <description>USB suspend.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>BUS_RST</name>
+              <description>USB bus reset.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>R_FIFO_RDY</name>
+              <description>USB receive FIFO data ready.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SIE_FREE</name>
+              <description>USB protocol handler free.</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SOF_ACT</name>
+              <description>SOF packet transfer status in USB host mode.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SOF_PRES</name>
+              <description>SOF packet presage status in USB host mode.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>INT_FG</name>
+          <description>USB interrupt flag register.</description>
+          <addressOffset>0x06</addressOffset>
+          <size>0x08</size>
+          <resetValue>0x20</resetValue>
+          <fields>
+            <field>
+              <name>BUS_RST</name>
+              <description>In USB device mode, USB bus reset event interrupt flag bit, write 1 to clear.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>TRANSFER</name>
+              <description>USB transfer completion interrupt flag, write 1 to clear.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SUSPEND</name>
+              <description>USB bus suspend or wake-up event interrupt flag, write 1 to clear.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>HST_SOF</name>
+              <description>SOF timer interrupt flag in USB host mode, write 1 to clear.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FIFO_OV</name>
+              <description>USB FIFO overflow interrupt flag, write 1 to clear.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SIE_FREE</name>
+              <description>USB protocol handler free.</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>TOG_MATCH_SYNC</name>
+              <description>Toggle bit of received packet matched expected.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>IS_NAK</name>
+              <description>NAK response interrupt flag bit in USB device mode.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>INT_ST</name>
+          <description>USB interrupt status register.</description>
+          <addressOffset>0x07</addressOffset>
+          <size>0x08</size>
+          <resetValue>0x00</resetValue>
+          <fields>
+            <field>
+              <name>ENDP</name>
+              <description>In device mode, the endpoint number of the current USB transfer transaction.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>TOKEN</name>
+              <description>In device mode, the token PID identifier of XXb the current USB transfer transaction.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>2</bitWidth>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>OUT</name>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>SOF</name>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>IN</name>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>SETUP</name>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>TOG_OK</name>
+              <description>Toggle bit of received packet matched expected.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>SETUP_ACT</name>
+              <description>SETUP transaction completed.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>RX_LEN</name>
+          <description>USB receive length register.</description>
+          <addressOffset>0x08</addressOffset>
+          <size>0x10</size>
+          <resetValue>0x00</resetValue>
+          <fields>
+            <field>
+              <name>RX_LEN</name>
+              <description>The current number of data bytes received by the USB endpoint.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>7</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>EP4_1_MOD</name>
+          <description>Endpoint 1 and 4 mode control.</description>
+          <addressOffset>0x0C</addressOffset>
+          <size>0x08</size>
+          <resetValue>0x00</resetValue>
+          <fields>
+            <field>
+              <name>EP4_T_EN</name>
+              <description>Endpoint 4 transmit enable.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EP4_R_EN</name>
+              <description>Endpoint 4 receive enable.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EP1_BUF_MOD</name>
+              <description>Endpoint 1 buffer mode control.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EP1_T_EN</name>
+              <description>Endpoint 1 transmit enable.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EP1_R_EN</name>
+              <description>Endpoint 1 receive enable.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>EP2_3_MOD</name>
+          <description>Endpoint 2 and 3 mode control.</description>
+          <addressOffset>0x0D</addressOffset>
+          <size>0x08</size>
+          <resetValue>0x00</resetValue>
+          <fields>
+            <field>
+              <name>EP2_BUF_MOD</name>
+              <description>Endpoint 2 buffer mode control.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EP2_T_EN</name>
+              <description>Endpoint 2 transmit enable.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EP2_R_EN</name>
+              <description>Endpoint 2 receive enable.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EP3_BUF_MOD</name>
+              <description>Endpoint 3 buffer mode control.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EP3_T_EN</name>
+              <description>Endpoint 3 transmit enable.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EP3_R_EN</name>
+              <description>Endpoint 3 receive enable.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>EP567_MOD</name>
+          <description>Endpoint 5, 6 and 7 mode control.</description>
+          <addressOffset>0x0E</addressOffset>
+          <size>0x08</size>
+          <resetValue>0x00</resetValue>
+          <fields>
+            <field>
+              <name>EP5_T_EN</name>
+              <description>Endpoint 5 transmit enable.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EP5_R_EN</name>
+              <description>Endpoint 5 receive enable.</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EP6_T_EN</name>
+              <description>Endpoint 6 transmit enable.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EP6_R_EN</name>
+              <description>Endpoint 6 receive enable.</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EP7_T_EN</name>
+              <description>Endpoint 7 transmit enable.</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EP7_R_EN</name>
+              <description>Endpoint 7 receive enable.</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>EP%s_DMA</name>
+          <description>Start address of the endpoint buffer.</description>
+          <addressOffset>0x10</addressOffset>
+          <dim>4</dim>
+          <dimIncrement>4</dimIncrement>
+          <size>0X20</size>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BUF_ADDR</name>
+              <description>Start address of the endpoint buffer, must be 4 byte aligned.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>15</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register derivedFrom="EP0_DMA">
+          <name>EP%s_DMA</name>
+          <description>Start address of the endpoint buffer.</description>
+          <addressOffset>0x54</addressOffset>
+          <dim>3</dim>
+          <dimIncrement>4</dimIncrement>
+          <dimIndex>5-7</dimIndex>
+        </register>
+        <register>
+          <name>EP%s_TX_LEN</name>
+          <description>Endpoint transmit length.</description>
+          <addressOffset>0x20</addressOffset>
+          <dim>5</dim>
+          <dimIncrement>4</dimIncrement>
+          <size>0x10</size>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>T_LEN</name>
+              <description>The number of bytes to be transmitted by the endpoint.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>7</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register derivedFrom="EP0_TX_LEN">
+          <name>EP%s_TX_LEN</name>
+          <description>Endpoint transmit length.</description>
+          <addressOffset>0x64</addressOffset>
+          <dim>3</dim>
+          <dimIncrement>4</dimIncrement>
+          <dimIndex>5-7</dimIndex>
+        </register>
+        <register>
+          <name>EP%s_CTRL_H</name>
+          <description>Endpoint control register.</description>
+          <addressOffset>0x22</addressOffset>
+          <dim>5</dim>
+          <dimIncrement>4</dimIncrement>
+          <size>0x10</size>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>T_RES</name>
+              <description>Endpoint transmitter response control.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>2</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ACK</name>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NYET</name>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NAK</name>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>STALL</name>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>R_RES</name>
+              <description>Endpoint receiver response control.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>2</bitWidth>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ACK</name>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NYET</name>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>NAK</name>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>STALL</name>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>T_TOG</name>
+              <description>Endpoint transmitter toggle bit.</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>R_TOG</name>
+              <description>Endpoint receiver toggle bit.</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register derivedFrom="EP0_CTRL_H">
+          <name>EP%s_CTRL_H</name>
+          <description>Endpoint control register.</description>
+          <addressOffset>0x66</addressOffset>
+          <dim>3</dim>
+          <dimIncrement>4</dimIncrement>
+          <dimIndex>5-7</dimIndex>
+        </register>
+        <register>
+          <name>EPX_CTRL</name>
+          <description>Endpoint X control register.</description>
+          <addressOffset>0x70</addressOffset>
+          <size>0x20</size>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>T_EN</name>
+              <description>Endpoint (8-15) transmit enable.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>8</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>R_EN</name>
+              <description>Endpoint (8-15) receive enable.</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>T_AF</name>
+              <description>Transmit endpoint alternate enable.</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>7</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+  </peripherals>
+</device>

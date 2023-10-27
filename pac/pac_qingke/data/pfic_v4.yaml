@@ -1,0 +1,1032 @@
+block/PFIC:
+  description: Programmable fast interrupt controller
+  items:
+  - name: ISR
+    description: Interrupt enable status
+    array:
+      len: 8
+      stride: 4
+    byte_offset: 0
+    access: Read
+    fieldset: ISR
+  - name: IPR
+    description: Interrupt pending status
+    array:
+      len: 8
+      stride: 4
+    byte_offset: 32
+    access: Read
+    fieldset: IPR
+  - name: IENR
+    description: Interrupt enable set
+    array:
+      len: 8
+      stride: 4
+    byte_offset: 256
+    access: Write
+    fieldset: IENR
+  - name: IRER
+    description: Interrupt enable clear
+    array:
+      len: 8
+      stride: 4
+    byte_offset: 384
+    access: Write
+    fieldset: IRER
+  - name: IPSR
+    description: Interrupt pending set
+    array:
+      len: 8
+      stride: 4
+    byte_offset: 512
+    access: Write
+    fieldset: IPSR
+  - name: IPRR
+    description: Interrupt pending clear
+    array:
+      len: 8
+      stride: 4
+    byte_offset: 640
+    access: Write
+    fieldset: IPRR
+  - name: IACTR
+    description: Interrupt activation status
+    array:
+      len: 8
+      stride: 4
+    byte_offset: 768
+    access: Read
+    fieldset: IACTR
+  - name: IPRIOR
+    description: Interrupt priority
+    array:
+      len: 256
+      stride: 1
+    byte_offset: 1024
+    fieldset: IPRIOR
+  - name: ITHRESDR
+    description: Interrupt priority threshold
+    byte_offset: 64
+    fieldset: ITHRESDR
+  - name: CFGR
+    description: Interrupt configuration
+    byte_offset: 72
+    fieldset: CFGR
+  - name: GISR
+    description: Interrupt global status
+    byte_offset: 76
+    access: Read
+    fieldset: GISR
+  - name: VTFIDR
+    description: VTF interrupt configuration
+    array:
+      len: 4
+      stride: 1
+    byte_offset: 80
+    bit_size: 8
+  - name: VTFADDR
+    description: VTF interrupt address
+    array:
+      len: 4
+      stride: 4
+    byte_offset: 96
+    access: ReadUnsafeWrite
+    fieldset: VTFADDR
+  - name: SCTLR
+    description: System control
+    byte_offset: 3344
+    fieldset: SCTLR
+fieldset/ISR:
+  description: Interrupt enable status register
+  fields:
+  - name: ISR
+    description: 'Interrupt #n enable status'
+    bit_offset: 0
+    bit_size: 1
+    array:
+      len: 32
+      stride: 1
+fieldset/IPR:
+  description: Interrupt pending status register
+  fields:
+  - name: IPR
+    description: 'Interrupt #n pending status'
+    bit_offset: 0
+    bit_size: 1
+    array:
+      len: 32
+      stride: 1
+fieldset/IENR:
+  description: Interrupt enable set register
+  fields:
+  - name: IENR
+    description: 'Interrupt #n enable set'
+    bit_offset: 0
+    bit_size: 1
+    array:
+      len: 32
+      stride: 1
+fieldset/IRER:
+  description: Interrupt enable clear register
+  fields:
+  - name: IRER
+    description: 'Interrupt #n enable clear'
+    bit_offset: 0
+    bit_size: 1
+    array:
+      len: 32
+      stride: 1
+fieldset/IPSR:
+  description: Interrupt pending set register
+  fields:
+  - name: IPSR
+    description: 'Interrupt #n pending set'
+    bit_offset: 0
+    bit_size: 1
+    array:
+      len: 32
+      stride: 1
+fieldset/IPRR:
+  description: Interrupt pending clear register
+  fields:
+  - name: IPRR
+    description: 'Interrupt #n pending clear'
+    bit_offset: 0
+    bit_size: 1
+    array:
+      len: 32
+      stride: 1
+fieldset/IACTR:
+  description: Interrupt activation status register
+  fields:
+  - name: IACTR
+    description: 'Interrupt #n activation status'
+    bit_offset: 0
+    bit_size: 1
+    array:
+      len: 32
+      stride: 1
+fieldset/IPRIOR:
+  description: Interrupt priority register
+  bit_size: 8
+  fields:
+  - name: IPRIOR
+    description: 'Interrupt #n priority'
+    bit_offset: 4
+    bit_size: 4
+fieldset/ITHRESDR:
+  description: Interrupt priority threshold register
+  fields:
+  - name: ITHRESDR
+    description: 'Interrupt priority threshold'
+    bit_offset: 4
+    bit_size: 4
+fieldset/CFGR:
+  description: Interrupt configuration register
+  fields:
+  - name: SYSRESET
+    description: System reset
+    bit_offset: 7
+    bit_size: 1
+  - name: KEYCODE
+    description: Interrupt configuration key
+    bit_offset: 16
+    bit_size: 16
+    enum: KEYCODE
+fieldset/GISR:
+  description: Interrupt global status register
+  fields:
+  - name: NESTSTA
+    description: Current interrupt nesting status
+    bit_offset: 0
+    bit_size: 8
+    enum: NESTSTA
+  - name: GACTSTA
+    description: Interrupt executing status
+    bit_offset: 8
+    bit_size: 1
+  - name: GPENDSTA
+    description: Interrupt pending status
+    bit_offset: 9
+    bit_size: 1
+fieldset/VTFADDR:
+  description: 'VTF #n interrupt address'
+  fields:
+  - name: ENABLE
+    description: 'VTF #n channel enable'
+    bit_offset: 0
+    bit_size: 1
+  - name: ADDR
+    description: 'VTF #n address'
+    bit_offset: 1
+    bit_size: 31
+fieldset/SCTLR:
+  description: System control register
+  fields:
+  - name: SLEEPONEXIT
+    description: Enter low-power mode after ISR
+    bit_offset: 1
+    bit_size: 1
+  - name: SLEEPDEEP
+    description: Enable deep sleep mode
+    bit_offset: 2
+    bit_size: 1
+  - name: WFITOWFE
+    description: Execute WFI as though it were WFE
+    bit_offset: 3
+    bit_size: 1
+  - name: SEVONPEND
+    description: Allow all interrupts (includded disabled interrupts) to wake the system from WFE
+    bit_offset: 4
+    bit_size: 1
+  - name: SETEVENT
+    description: Set the event to wake from WFE
+    bit_offset: 5
+    bit_size: 1
+  - name: SYSRESET
+    description: System reset
+    bit_offset: 31
+    bit_size: 1
+enum/KEYCODE:
+  bit_size: 16
+  variants:
+  - name: Key1
+    value: 64005
+  - name: Key2
+    value: 48303
+  - name: Key3
+    value: 48879
+enum/NESTSTA:
+  bit_size: 8
+  variants:
+  - name: None
+    description: No active interrupt
+    value: 0
+  - name: Level1
+    description: In level 1 interrupt
+    value: 1
+  - name: Level2
+    description: In level 2 interrupt
+    value: 3
+  - name: Level3
+    description: In level 3 interrupt
+    value: 7
+  - name: Level4
+    description: In level 4 interrupt
+    value: 15
+  - name: Level5
+    description: In level 5 interrupt
+    value: 31
+  - name: Level6
+    description: In level 6 interrupt
+    value: 63
+  - name: Level7
+    description: In level 7 interrupt
+    value: 127
+  - name: Level8
+    description: In level 8 interrupt
+    value: 255
+enum/INTERRUPT:
+  bit_size: 8
+  variants:
+  - name: Nmi
+    description: Non-maskable interrupt
+    value: 2
+  - name: Exc
+    description: Exception interrupt
+    value: 3
+  - name: EcallM
+    description: Machine mode environment call interrupt
+    value: 5
+  - name: EcallU
+    description: User mode environment call interrupt
+    value: 8
+  - name: Breakpoint
+    description: Breakpoint interrupt
+    value: 9
+  - name: SysTick
+    description: System timer interrupt
+    value: 12
+  - name: Swi
+    description: Software interrupt
+    value: 14
+  - name: ExtInt16
+    description: External interrupt 16
+    value: 16
+  - name: ExtInt17
+    description: External interrupt 17
+    value: 17
+  - name: ExtInt18
+    description: External interrupt 18
+    value: 18
+  - name: ExtInt19
+    description: External interrupt 19
+    value: 19
+  - name: ExtInt20
+    description: External interrupt 20
+    value: 20
+  - name: ExtInt21
+    description: External interrupt 21
+    value: 21
+  - name: ExtInt22
+    description: External interrupt 22
+    value: 22
+  - name: ExtInt23
+    description: External interrupt 23
+    value: 23
+  - name: ExtInt24
+    description: External interrupt 24
+    value: 24
+  - name: ExtInt25
+    description: External interrupt 25
+    value: 25
+  - name: ExtInt26
+    description: External interrupt 26
+    value: 26
+  - name: ExtInt27
+    description: External interrupt 27
+    value: 27
+  - name: ExtInt28
+    description: External interrupt 28
+    value: 28
+  - name: ExtInt29
+    description: External interrupt 29
+    value: 29
+  - name: ExtInt30
+    description: External interrupt 30
+    value: 30
+  - name: ExtInt31
+    description: External interrupt 31
+    value: 31
+  - name: ExtInt32
+    description: External interrupt 32
+    value: 32
+  - name: ExtInt33
+    description: External interrupt 33
+    value: 33
+  - name: ExtInt34
+    description: External interrupt 34
+    value: 34
+  - name: ExtInt35
+    description: External interrupt 35
+    value: 35
+  - name: ExtInt36
+    description: External interrupt 36
+    value: 36
+  - name: ExtInt37
+    description: External interrupt 37
+    value: 37
+  - name: ExtInt38
+    description: External interrupt 38
+    value: 38
+  - name: ExtInt39
+    description: External interrupt 39
+    value: 39
+  - name: ExtInt40
+    description: External interrupt 40
+    value: 40
+  - name: ExtInt41
+    description: External interrupt 41
+    value: 41
+  - name: ExtInt42
+    description: External interrupt 42
+    value: 42
+  - name: ExtInt43
+    description: External interrupt 43
+    value: 43
+  - name: ExtInt44
+    description: External interrupt 44
+    value: 44
+  - name: ExtInt45
+    description: External interrupt 45
+    value: 45
+  - name: ExtInt46
+    description: External interrupt 46
+    value: 46
+  - name: ExtInt47
+    description: External interrupt 47
+    value: 47
+  - name: ExtInt48
+    description: External interrupt 48
+    value: 48
+  - name: ExtInt49
+    description: External interrupt 49
+    value: 49
+  - name: ExtInt50
+    description: External interrupt 50
+    value: 50
+  - name: ExtInt51
+    description: External interrupt 51
+    value: 51
+  - name: ExtInt52
+    description: External interrupt 52
+    value: 52
+  - name: ExtInt53
+    description: External interrupt 53
+    value: 53
+  - name: ExtInt54
+    description: External interrupt 54
+    value: 54
+  - name: ExtInt55
+    description: External interrupt 55
+    value: 55
+  - name: ExtInt56
+    description: External interrupt 56
+    value: 56
+  - name: ExtInt57
+    description: External interrupt 57
+    value: 57
+  - name: ExtInt58
+    description: External interrupt 58
+    value: 58
+  - name: ExtInt59
+    description: External interrupt 59
+    value: 59
+  - name: ExtInt60
+    description: External interrupt 60
+    value: 60
+  - name: ExtInt61
+    description: External interrupt 61
+    value: 61
+  - name: ExtInt62
+    description: External interrupt 62
+    value: 62
+  - name: ExtInt63
+    description: External interrupt 63
+    value: 63
+  - name: ExtInt64
+    description: External interrupt 64
+    value: 64
+  - name: ExtInt65
+    description: External interrupt 65
+    value: 65
+  - name: ExtInt66
+    description: External interrupt 66
+    value: 66
+  - name: ExtInt67
+    description: External interrupt 67
+    value: 67
+  - name: ExtInt68
+    description: External interrupt 68
+    value: 68
+  - name: ExtInt69
+    description: External interrupt 69
+    value: 69
+  - name: ExtInt70
+    description: External interrupt 70
+    value: 70
+  - name: ExtInt71
+    description: External interrupt 71
+    value: 71
+  - name: ExtInt72
+    description: External interrupt 72
+    value: 72
+  - name: ExtInt73
+    description: External interrupt 73
+    value: 73
+  - name: ExtInt74
+    description: External interrupt 74
+    value: 74
+  - name: ExtInt75
+    description: External interrupt 75
+    value: 75
+  - name: ExtInt76
+    description: External interrupt 76
+    value: 76
+  - name: ExtInt77
+    description: External interrupt 77
+    value: 77
+  - name: ExtInt78
+    description: External interrupt 78
+    value: 78
+  - name: ExtInt79
+    description: External interrupt 79
+    value: 79
+  - name: ExtInt80
+    description: External interrupt 80
+    value: 80
+  - name: ExtInt81
+    description: External interrupt 81
+    value: 81
+  - name: ExtInt82
+    description: External interrupt 82
+    value: 82
+  - name: ExtInt83
+    description: External interrupt 83
+    value: 83
+  - name: ExtInt84
+    description: External interrupt 84
+    value: 84
+  - name: ExtInt85
+    description: External interrupt 85
+    value: 85
+  - name: ExtInt86
+    description: External interrupt 86
+    value: 86
+  - name: ExtInt87
+    description: External interrupt 87
+    value: 87
+  - name: ExtInt88
+    description: External interrupt 88
+    value: 88
+  - name: ExtInt89
+    description: External interrupt 89
+    value: 89
+  - name: ExtInt90
+    description: External interrupt 90
+    value: 90
+  - name: ExtInt91
+    description: External interrupt 91
+    value: 91
+  - name: ExtInt92
+    description: External interrupt 92
+    value: 92
+  - name: ExtInt93
+    description: External interrupt 93
+    value: 93
+  - name: ExtInt94
+    description: External interrupt 94
+    value: 94
+  - name: ExtInt95
+    description: External interrupt 95
+    value: 95
+  - name: ExtInt96
+    description: External interrupt 96
+    value: 96
+  - name: ExtInt97
+    description: External interrupt 97
+    value: 97
+  - name: ExtInt98
+    description: External interrupt 98
+    value: 98
+  - name: ExtInt99
+    description: External interrupt 99
+    value: 99
+  - name: ExtInt100
+    description: External interrupt 100
+    value: 100
+  - name: ExtInt101
+    description: External interrupt 101
+    value: 101
+  - name: ExtInt102
+    description: External interrupt 102
+    value: 102
+  - name: ExtInt103
+    description: External interrupt 103
+    value: 103
+  - name: ExtInt104
+    description: External interrupt 104
+    value: 104
+  - name: ExtInt105
+    description: External interrupt 105
+    value: 105
+  - name: ExtInt106
+    description: External interrupt 106
+    value: 106
+  - name: ExtInt107
+    description: External interrupt 107
+    value: 107
+  - name: ExtInt108
+    description: External interrupt 108
+    value: 108
+  - name: ExtInt109
+    description: External interrupt 109
+    value: 109
+  - name: ExtInt110
+    description: External interrupt 110
+    value: 110
+  - name: ExtInt111
+    description: External interrupt 111
+    value: 111
+  - name: ExtInt112
+    description: External interrupt 112
+    value: 112
+  - name: ExtInt113
+    description: External interrupt 113
+    value: 113
+  - name: ExtInt114
+    description: External interrupt 114
+    value: 114
+  - name: ExtInt115
+    description: External interrupt 115
+    value: 115
+  - name: ExtInt116
+    description: External interrupt 116
+    value: 116
+  - name: ExtInt117
+    description: External interrupt 117
+    value: 117
+  - name: ExtInt118
+    description: External interrupt 118
+    value: 118
+  - name: ExtInt119
+    description: External interrupt 119
+    value: 119
+  - name: ExtInt120
+    description: External interrupt 120
+    value: 120
+  - name: ExtInt121
+    description: External interrupt 121
+    value: 121
+  - name: ExtInt122
+    description: External interrupt 122
+    value: 122
+  - name: ExtInt123
+    description: External interrupt 123
+    value: 123
+  - name: ExtInt124
+    description: External interrupt 124
+    value: 124
+  - name: ExtInt125
+    description: External interrupt 125
+    value: 125
+  - name: ExtInt126
+    description: External interrupt 126
+    value: 126
+  - name: ExtInt127
+    description: External interrupt 127
+    value: 127
+  - name: ExtInt128
+    description: External interrupt 128
+    value: 128
+  - name: ExtInt129
+    description: External interrupt 129
+    value: 129
+  - name: ExtInt130
+    description: External interrupt 130
+    value: 130
+  - name: ExtInt131
+    description: External interrupt 131
+    value: 131
+  - name: ExtInt132
+    description: External interrupt 132
+    value: 132
+  - name: ExtInt133
+    description: External interrupt 133
+    value: 133
+  - name: ExtInt134
+    description: External interrupt 134
+    value: 134
+  - name: ExtInt135
+    description: External interrupt 135
+    value: 135
+  - name: ExtInt136
+    description: External interrupt 136
+    value: 136
+  - name: ExtInt137
+    description: External interrupt 137
+    value: 137
+  - name: ExtInt138
+    description: External interrupt 138
+    value: 138
+  - name: ExtInt139
+    description: External interrupt 139
+    value: 139
+  - name: ExtInt140
+    description: External interrupt 140
+    value: 140
+  - name: ExtInt141
+    description: External interrupt 141
+    value: 141
+  - name: ExtInt142
+    description: External interrupt 142
+    value: 142
+  - name: ExtInt143
+    description: External interrupt 143
+    value: 143
+  - name: ExtInt144
+    description: External interrupt 144
+    value: 144
+  - name: ExtInt145
+    description: External interrupt 145
+    value: 145
+  - name: ExtInt146
+    description: External interrupt 146
+    value: 146
+  - name: ExtInt147
+    description: External interrupt 147
+    value: 147
+  - name: ExtInt148
+    description: External interrupt 148
+    value: 148
+  - name: ExtInt149
+    description: External interrupt 149
+    value: 149
+  - name: ExtInt150
+    description: External interrupt 150
+    value: 150
+  - name: ExtInt151
+    description: External interrupt 151
+    value: 151
+  - name: ExtInt152
+    description: External interrupt 152
+    value: 152
+  - name: ExtInt153
+    description: External interrupt 153
+    value: 153
+  - name: ExtInt154
+    description: External interrupt 154
+    value: 154
+  - name: ExtInt155
+    description: External interrupt 155
+    value: 155
+  - name: ExtInt156
+    description: External interrupt 156
+    value: 156
+  - name: ExtInt157
+    description: External interrupt 157
+    value: 157
+  - name: ExtInt158
+    description: External interrupt 158
+    value: 158
+  - name: ExtInt159
+    description: External interrupt 159
+    value: 159
+  - name: ExtInt160
+    description: External interrupt 160
+    value: 160
+  - name: ExtInt161
+    description: External interrupt 161
+    value: 161
+  - name: ExtInt162
+    description: External interrupt 162
+    value: 162
+  - name: ExtInt163
+    description: External interrupt 163
+    value: 163
+  - name: ExtInt164
+    description: External interrupt 164
+    value: 164
+  - name: ExtInt165
+    description: External interrupt 165
+    value: 165
+  - name: ExtInt166
+    description: External interrupt 166
+    value: 166
+  - name: ExtInt167
+    description: External interrupt 167
+    value: 167
+  - name: ExtInt168
+    description: External interrupt 168
+    value: 168
+  - name: ExtInt169
+    description: External interrupt 169
+    value: 169
+  - name: ExtInt170
+    description: External interrupt 170
+    value: 170
+  - name: ExtInt171
+    description: External interrupt 171
+    value: 171
+  - name: ExtInt172
+    description: External interrupt 172
+    value: 172
+  - name: ExtInt173
+    description: External interrupt 173
+    value: 173
+  - name: ExtInt174
+    description: External interrupt 174
+    value: 174
+  - name: ExtInt175
+    description: External interrupt 175
+    value: 175
+  - name: ExtInt176
+    description: External interrupt 176
+    value: 176
+  - name: ExtInt177
+    description: External interrupt 177
+    value: 177
+  - name: ExtInt178
+    description: External interrupt 178
+    value: 178
+  - name: ExtInt179
+    description: External interrupt 179
+    value: 179
+  - name: ExtInt180
+    description: External interrupt 180
+    value: 180
+  - name: ExtInt181
+    description: External interrupt 181
+    value: 181
+  - name: ExtInt182
+    description: External interrupt 182
+    value: 182
+  - name: ExtInt183
+    description: External interrupt 183
+    value: 183
+  - name: ExtInt184
+    description: External interrupt 184
+    value: 184
+  - name: ExtInt185
+    description: External interrupt 185
+    value: 185
+  - name: ExtInt186
+    description: External interrupt 186
+    value: 186
+  - name: ExtInt187
+    description: External interrupt 187
+    value: 187
+  - name: ExtInt188
+    description: External interrupt 188
+    value: 188
+  - name: ExtInt189
+    description: External interrupt 189
+    value: 189
+  - name: ExtInt190
+    description: External interrupt 190
+    value: 190
+  - name: ExtInt191
+    description: External interrupt 191
+    value: 191
+  - name: ExtInt192
+    description: External interrupt 192
+    value: 192
+  - name: ExtInt193
+    description: External interrupt 193
+    value: 193
+  - name: ExtInt194
+    description: External interrupt 194
+    value: 194
+  - name: ExtInt195
+    description: External interrupt 195
+    value: 195
+  - name: ExtInt196
+    description: External interrupt 196
+    value: 196
+  - name: ExtInt197
+    description: External interrupt 197
+    value: 197
+  - name: ExtInt198
+    description: External interrupt 198
+    value: 198
+  - name: ExtInt199
+    description: External interrupt 199
+    value: 199
+  - name: ExtInt200
+    description: External interrupt 200
+    value: 200
+  - name: ExtInt201
+    description: External interrupt 201
+    value: 201
+  - name: ExtInt202
+    description: External interrupt 202
+    value: 202
+  - name: ExtInt203
+    description: External interrupt 203
+    value: 203
+  - name: ExtInt204
+    description: External interrupt 204
+    value: 204
+  - name: ExtInt205
+    description: External interrupt 205
+    value: 205
+  - name: ExtInt206
+    description: External interrupt 206
+    value: 206
+  - name: ExtInt207
+    description: External interrupt 207
+    value: 207
+  - name: ExtInt208
+    description: External interrupt 208
+    value: 208
+  - name: ExtInt209
+    description: External interrupt 209
+    value: 209
+  - name: ExtInt210
+    description: External interrupt 210
+    value: 210
+  - name: ExtInt211
+    description: External interrupt 211
+    value: 211
+  - name: ExtInt212
+    description: External interrupt 212
+    value: 212
+  - name: ExtInt213
+    description: External interrupt 213
+    value: 213
+  - name: ExtInt214
+    description: External interrupt 214
+    value: 214
+  - name: ExtInt215
+    description: External interrupt 215
+    value: 215
+  - name: ExtInt216
+    description: External interrupt 216
+    value: 216
+  - name: ExtInt217
+    description: External interrupt 217
+    value: 217
+  - name: ExtInt218
+    description: External interrupt 218
+    value: 218
+  - name: ExtInt219
+    description: External interrupt 219
+    value: 219
+  - name: ExtInt220
+    description: External interrupt 220
+    value: 220
+  - name: ExtInt221
+    description: External interrupt 221
+    value: 221
+  - name: ExtInt222
+    description: External interrupt 222
+    value: 222
+  - name: ExtInt223
+    description: External interrupt 223
+    value: 223
+  - name: ExtInt224
+    description: External interrupt 224
+    value: 224
+  - name: ExtInt225
+    description: External interrupt 225
+    value: 225
+  - name: ExtInt226
+    description: External interrupt 226
+    value: 226
+  - name: ExtInt227
+    description: External interrupt 227
+    value: 227
+  - name: ExtInt228
+    description: External interrupt 228
+    value: 228
+  - name: ExtInt229
+    description: External interrupt 229
+    value: 229
+  - name: ExtInt230
+    description: External interrupt 230
+    value: 230
+  - name: ExtInt231
+    description: External interrupt 231
+    value: 231
+  - name: ExtInt232
+    description: External interrupt 232
+    value: 232
+  - name: ExtInt233
+    description: External interrupt 233
+    value: 233
+  - name: ExtInt234
+    description: External interrupt 234
+    value: 234
+  - name: ExtInt235
+    description: External interrupt 235
+    value: 235
+  - name: ExtInt236
+    description: External interrupt 236
+    value: 236
+  - name: ExtInt237
+    description: External interrupt 237
+    value: 237
+  - name: ExtInt238
+    description: External interrupt 238
+    value: 238
+  - name: ExtInt239
+    description: External interrupt 239
+    value: 239
+  - name: ExtInt240
+    description: External interrupt 240
+    value: 240
+  - name: ExtInt241
+    description: External interrupt 241
+    value: 241
+  - name: ExtInt242
+    description: External interrupt 242
+    value: 242
+  - name: ExtInt243
+    description: External interrupt 243
+    value: 243
+  - name: ExtInt244
+    description: External interrupt 244
+    value: 244
+  - name: ExtInt245
+    description: External interrupt 245
+    value: 245
+  - name: ExtInt246
+    description: External interrupt 246
+    value: 246
+  - name: ExtInt247
+    description: External interrupt 247
+    value: 247
+  - name: ExtInt248
+    description: External interrupt 248
+    value: 248
+  - name: ExtInt249
+    description: External interrupt 249
+    value: 249
+  - name: ExtInt250
+    description: External interrupt 250
+    value: 250
+  - name: ExtInt251
+    description: External interrupt 251
+    value: 251
+  - name: ExtInt252
+    description: External interrupt 252
+    value: 252
+  - name: ExtInt253
+    description: External interrupt 253
+    value: 253
+  - name: ExtInt254
+    description: External interrupt 254
+    value: 254
+  - name: ExtInt255
+    description: External interrupt 255
+    value: 255

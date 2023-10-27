@@ -1,0 +1,40 @@
+block/MTIMER_TIME:
+  description: Machine-level timer time
+  items:
+  - name: MTIME
+    description: Machine-level time counter
+    byte_offset: 0
+    bit_size: 64
+  - name: MTIMEL
+    description: Machine-level time counter low
+    byte_offset: 0
+  - name: MTIMEH
+    description: Machine-level time counter high
+    byte_offset: 4
+block/MTIMER_COMPARE:
+  description: Machine-level timer compare
+  items:
+  - name: MTIMECMP
+    description: 'HART index #n machine-level time compare'
+    array:
+      len: 4095
+      stride: 8
+    byte_offset: 0
+    bit_size: 64
+block/MSWI:
+  description: Machine-level software interrupt device
+  items:
+  - name: MSIP
+    description: 'HART index #n machine-level IPI register'
+    array:
+      len: 4095
+      stride: 4
+    byte_offset: 0
+    fieldset: MSIP
+fieldset/MSIP:
+  description: Machine-level IPI register
+  fields:
+  - name: PENDING
+    description: 'HART index #n machine-level SWI pending'
+    bit_offset: 0
+    bit_size: 1

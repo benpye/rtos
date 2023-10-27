@@ -1,0 +1,16 @@
+[package]
+name = "kernel_types"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bitflags.workspace = true
+open-enum.workspace = true
+zerocopy.workspace = true
+
+[features]
+
+[lints]
+workspace = true

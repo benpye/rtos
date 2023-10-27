@@ -1,0 +1,20 @@
+[package]
+name = "ch32x0_afio"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["staticlib"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ch32x0 = { workspace = true, features = [ "ch32x035" ] }
+rtos_macros.workspace = true
+rpc.workspace = true
+rpc_ch32x0_afio.workspace = true
+rpc_ch32x0_rcc.workspace = true
+kernel_types.workspace = true
+
+[lints]
+workspace = true

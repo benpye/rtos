@@ -1,0 +1,88 @@
+block/SYSTICK:
+  description: System timer
+  items:
+  - name: CTLR
+    description: System count control register
+    byte_offset: 0
+    fieldset: CTLR
+  - name: SR
+    description: System count status register
+    byte_offset: 4
+    fieldset: SR
+  - name: CNTL
+    description: System counter low register
+    byte_offset: 8
+  - name: CNTH
+    description: System counter high register
+    byte_offset: 12
+  - name: CMPLR
+    description: System count comparison value low register
+    byte_offset: 16
+  - name: CMPHR
+    description: System count comparison value high register
+    byte_offset: 20
+fieldset/CTLR:
+  description: System count control register
+  fields:
+  - name: STE
+    description: Counter enable
+    bit_offset: 0
+    bit_size: 1
+  - name: STIE
+    description: Interrupt enable
+    bit_offset: 1
+    bit_size: 1
+  - name: STCLK
+    description: Clock source selection
+    bit_offset: 2
+    bit_size: 1
+    enum: STCLK
+  - name: STRE
+    description: Auto reload count enable
+    bit_offset: 3
+    bit_size: 1
+  - name: MODE
+    description: Counting mode
+    bit_offset: 4
+    bit_size: 1
+    enum: MODE
+  - name: INIT
+    description: Counter initial value update
+    bit_offset: 5
+    bit_size: 1
+    enum: INIT
+  - name: SWIE
+    description: Trigger software interrupt
+    bit_offset: 31
+    bit_size: 1
+fieldset/SR:
+  description: System count status register
+  fields:
+  - name: CNTIF
+    description: Count value comparison flag
+    bit_offset: 0
+    bit_size: 1
+enum/INIT:
+  bit_size: 1
+  variants:
+  - name: Init
+    description: Must be set
+    value: 1
+enum/MODE:
+  bit_size: 1
+  variants:
+  - name: Up
+    description: Count up
+    value: 0
+  - name: Down
+    description: Count down
+    value: 1
+enum/STCLK:
+  bit_size: 1
+  variants:
+  - name: Div8
+    description: Use HCLK/8 as the clock source
+    value: 0
+  - name: Div1
+    description: Use HCLK as the clock source
+    value: 1

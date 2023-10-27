@@ -1,0 +1,8 @@
+[unstable]
+bindeps = true
+
+[build]
+rustflags = [ "-Csymbol-mangling-version=v0" ]
+
+[target.riscv32imac-unknown-none-elf]
+rustflags = [ "-Clto=fat", "-Zemit-thin-lto=off", "-Cembed-bitcode=yes", "-Copt-level=z", "-Ccodegen-units=1" ]

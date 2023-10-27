@@ -1,0 +1,19 @@
+[package]
+name = "test_runner"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["staticlib"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rtos_macros.workspace = true
+rpc_test_helper.workspace = true
+kernel_types.workspace = true
+semihosting = { workspace = true, features = [ "stdio" ] }
+syscall.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,12 @@
+[package]
+name = "stack_analyzer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+llvm-ir.workspace = true
+llvm-sys.workspace = true
+stack-sizes = "0.5.0"
+
+[lints]
+workspace = true

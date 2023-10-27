@@ -1,0 +1,10 @@
+MEMORY
+{
+    rom (rx)    : ORIGIN = 0x00000000, LENGTH = 62k
+    ram (rw)    : ORIGIN = 0x20000000, LENGTH = 20k
+}
+
+PROVIDE(rtos.PERIPHERAL_PFIC_BASE       = 0xe000e000);
+PROVIDE(rtos.PERIPHERAL_SYSTICK_BASE    = 0xe000f000);
+
+{{> common/device }}
