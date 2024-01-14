@@ -178,134 +178,134 @@ fn task_main() -> ! {
         let scan = scan & 0x7f;
 
         let lut = [
-            Keyboard::A,                     //0x04,	// 0
-            Keyboard::S,                     //0x16,	// 1
-            Keyboard::D,                     //0x07,	// 2
-            Keyboard::F,                     //0x09,	// 3
-            Keyboard::H,                     //0x0b,	// 4
-            Keyboard::G,                     //0x0a,	// 5
-            Keyboard::Z,                     //0x1d,	// 6
-            Keyboard::X,                     //0x1b,	// 7
-            Keyboard::C,                     //0x06,	// 8
-            Keyboard::V,                     //0x19,	// 9
-            Keyboard::NonUSBackslash,        //0x64,	// a
-            Keyboard::B,                     //0x05,	// b
-            Keyboard::Q,                     //0x14,	// c
-            Keyboard::W,                     //0x1a,	// d
-            Keyboard::E,                     //0x08,	// e
-            Keyboard::R,                     //0x15,	// f
-            Keyboard::Y,                     //0x1c,	// 10
-            Keyboard::T,                     //0x17,	// 11
-            Keyboard::Keyboard1,             //0x1e,	// 12
-            Keyboard::Keyboard2,             //0x1f,	// 13
-            Keyboard::Keyboard3,             //0x20,	// 14
-            Keyboard::Keyboard4,             //0x21,	// 15
-            Keyboard::Keyboard6,             //0x23,	// 16
-            Keyboard::Keyboard5,             //0x22,	// 17
-            Keyboard::Equal,                 //0x2e,	// 18
-            Keyboard::Keyboard9,             //0x26,	// 19
-            Keyboard::Keyboard7,             //0x24,	// 1a
-            Keyboard::Minus,                 //0x2d,	// 1b
-            Keyboard::Keyboard8,             //0x25,	// 1c
-            Keyboard::Keyboard0,             //0x27,	// 1d
-            Keyboard::RightBrace,            //0x30,	// 1e
-            Keyboard::O,                     //0x12,	// 1f
-            Keyboard::U,                     //0x18,	// 20
-            Keyboard::LeftBrace,             //0x2f,	// 21
-            Keyboard::I,                     //0x0c,	// 22
-            Keyboard::P,                     //0x13,	// 23
-            Keyboard::ReturnEnter,           //0x28,	// 24
-            Keyboard::L,                     //0x0f,	// 25
-            Keyboard::J,                     //0x0d,	// 26
-            Keyboard::Apostrophe,            //0x34,	// 27
-            Keyboard::K,                     //0x0e,	// 28
-            Keyboard::Semicolon,             //0x33,	// 29
-            Keyboard::Backslash,             //0x31,	// 2a
-            Keyboard::Comma,                 //0x36,	// 2b
-            Keyboard::ForwardSlash,          //0x38,	// 2c
-            Keyboard::N,                     //0x11,	// 2d
-            Keyboard::M,                     //0x10,	// 2e
-            Keyboard::Dot,                   //0x37,	// 2f
-            Keyboard::Tab,                   //0x2b,	// 30
-            Keyboard::Space,                 //0x2c,	// 31
-            Keyboard::Grave,                 //0x35,	// 32
-            Keyboard::DeleteBackspace,       //0x2a,	// 33
-            Keyboard::KeypadEnter,           //0x58,	// 34
-            Keyboard::Escape,                //0x29,	// 35
-            Keyboard::LeftControl,           //0xe7,	// 36
-            Keyboard::LeftGUI,               //0xe3,	// 37
-            Keyboard::LeftShift,             //0xe1,	// 38
-            Keyboard::CapsLock,              //0x39,	// 39
-            Keyboard::LeftAlt,               //0xe2,	// 3a
-            Keyboard::LeftArrow,             //0xe0,	// 3b
-            Keyboard::RightArrow,            //0xe5,	// 3c
-            Keyboard::DownArrow,             //0xe6,	// 3d
-            Keyboard::UpArrow,               //0xe4,	// 3e
-            Keyboard::NoEventIndicated,      //0x00,	// 3f
-            Keyboard::F17,                   //0x6c,	// 40
-            Keyboard::KeypadDot,             //0x63,	// 41
-            Keyboard::NoEventIndicated,      //0x00,	// 42
-            Keyboard::KeypadMultiply,        //0x55,	// 43
-            Keyboard::F18,                   //0x6d,	// 44
-            Keyboard::KeypadAdd,             //0x57,	// 45
-            Keyboard::NoEventIndicated,      //0x00,	// 46
-            Keyboard::KeypadNumLockAndClear, //0x53,	// 47
-            Keyboard::NoEventIndicated,      //0x00,	// 48
-            Keyboard::NoEventIndicated,      //0x00,	// 49
-            Keyboard::NoEventIndicated,      //0x00,	// 4a
-            Keyboard::KeypadDivide,          //0x54,	// 4b
-            Keyboard::KeypadEnter,           //0x58,	// 4c
-            Keyboard::NoEventIndicated,      //0x00,	// 4d
-            Keyboard::KeypadSubtract,        //0x56,	// 4e
-            Keyboard::F18,                   //0x6d,	// 4f
-            Keyboard::F19,                   //0x6e,	// 50
-            Keyboard::KeypadEqual,           //0x67,	// 51
-            Keyboard::Keypad0,               //0x62,	// 52
-            Keyboard::Keypad1,               //0x59,	// 53
-            Keyboard::Keypad2,               //0x5a,	// 54
-            Keyboard::Keypad3,               //0x5b,	// 55
-            Keyboard::Keypad4,               //0x5c,	// 56
-            Keyboard::Keypad5,               //0x5d,	// 57
-            Keyboard::Keypad6,               //0x5e,	// 58
-            Keyboard::Keypad7,               //0x5f,	// 59
-            Keyboard::F20,                   //0x6f,	// 5a
-            Keyboard::Keypad8,               //0x60,	// 5b
-            Keyboard::Keypad9,               //0x61,	// 5c
-            Keyboard::Kanji3,                //0x89,	// 5d
-            Keyboard::Kanji1,                //0x87,	// 5e
-            Keyboard::KeypadComma,           //0x85,	// 5f
-            Keyboard::F5,                    //0x3e,	// 60
-            Keyboard::F6,                    //0x3f,	// 61
-            Keyboard::F7,                    //0x40,	// 62
-            Keyboard::F3,                    //0x3c,	// 63
-            Keyboard::F8,                    //0x41,	// 64
-            Keyboard::F9,                    //0x42,	// 65
-            Keyboard::LANG2,                 //0x91,	// 66
-            Keyboard::F11,                   //0x44,	// 67
-            Keyboard::LANG1,                 //0x90,	// 68
-            Keyboard::F13,                   //0x68,	// 69
-            Keyboard::F16,                   //0x6b,	// 6a
-            Keyboard::F14,                   //0x69,	// 6b
-            Keyboard::NoEventIndicated,      //0x0,	// 6c
-            Keyboard::F10,                   //0x43,	// 6d
-            Keyboard::Application,           //0x65,	// 6e  Microsoft Winodows95 key
-            Keyboard::F12,                   //0x45,	// 6f
-            Keyboard::NoEventIndicated,      //0x0,	// 70
-            Keyboard::F15,                   //0x6a,	// 71
-            Keyboard::Help,                  //0x75,	// 72
-            Keyboard::Home,                  //0x4a,	// 73
-            Keyboard::PageUp,                //0x4b,	// 74
-            Keyboard::DeleteForward,         //0x4c,	// 75
-            Keyboard::F4,                    //0x3d,	// 76
-            Keyboard::End,                   //0x4d,	// 77
-            Keyboard::F2,                    //0x3b,	// 78
-            Keyboard::PageDown,              //0x4e,	// 79
-            Keyboard::F1,                    //0x3a,	// 7a
-            Keyboard::RightShift,            //0x50,	// 7b
-            Keyboard::RightAlt,              //0x4f,	// 7c
-            Keyboard::RightControl,          //0x51,	// 7d
-            Keyboard::UpArrow,               //0x52,	// 7e
-            Keyboard::Power,                 //0x66,	// 7f
+            Keyboard::A,                     // 0
+            Keyboard::S,                     // 1
+            Keyboard::D,                     // 2
+            Keyboard::F,                     // 3
+            Keyboard::H,                     // 4
+            Keyboard::G,                     // 5
+            Keyboard::Z,                     // 6
+            Keyboard::X,                     // 7
+            Keyboard::C,                     // 8
+            Keyboard::V,                     // 9
+            Keyboard::NonUSBackslash,        // a
+            Keyboard::B,                     // b
+            Keyboard::Q,                     // c
+            Keyboard::W,                     // d
+            Keyboard::E,                     // e
+            Keyboard::R,                     // f
+            Keyboard::Y,                     // 10
+            Keyboard::T,                     // 11
+            Keyboard::Keyboard1,             // 12
+            Keyboard::Keyboard2,             // 13
+            Keyboard::Keyboard3,             // 14
+            Keyboard::Keyboard4,             // 15
+            Keyboard::Keyboard6,             // 16
+            Keyboard::Keyboard5,             // 17
+            Keyboard::Equal,                 // 18
+            Keyboard::Keyboard9,             // 19
+            Keyboard::Keyboard7,             // 1a
+            Keyboard::Minus,                 // 1b
+            Keyboard::Keyboard8,             // 1c
+            Keyboard::Keyboard0,             // 1d
+            Keyboard::RightBrace,            // 1e
+            Keyboard::O,                     // 1f
+            Keyboard::U,                     // 20
+            Keyboard::LeftBrace,             // 21
+            Keyboard::I,                     // 22
+            Keyboard::P,                     // 23
+            Keyboard::ReturnEnter,           // 24
+            Keyboard::L,                     // 25
+            Keyboard::J,                     // 26
+            Keyboard::Apostrophe,            // 27
+            Keyboard::K,                     // 28
+            Keyboard::Semicolon,             // 29
+            Keyboard::Backslash,             // 2a
+            Keyboard::Comma,                 // 2b
+            Keyboard::ForwardSlash,          // 2c
+            Keyboard::N,                     // 2d
+            Keyboard::M,                     // 2e
+            Keyboard::Dot,                   // 2f
+            Keyboard::Tab,                   // 30
+            Keyboard::Space,                 // 31
+            Keyboard::Grave,                 // 32
+            Keyboard::DeleteBackspace,       // 33
+            Keyboard::KeypadEnter,           // 34
+            Keyboard::Escape,                // 35
+            Keyboard::LeftControl,           // 36
+            Keyboard::LeftGUI,               // 37
+            Keyboard::LeftShift,             // 38
+            Keyboard::CapsLock,              // 39
+            Keyboard::LeftAlt,               // 3a
+            Keyboard::LeftArrow,             // 3b
+            Keyboard::RightArrow,            // 3c
+            Keyboard::DownArrow,             // 3d
+            Keyboard::UpArrow,               // 3e
+            Keyboard::NoEventIndicated,      // 3f
+            Keyboard::F17,                   // 40
+            Keyboard::KeypadDot,             // 41
+            Keyboard::NoEventIndicated,      // 42
+            Keyboard::KeypadMultiply,        // 43
+            Keyboard::F18,                   // 44
+            Keyboard::KeypadAdd,             // 45
+            Keyboard::NoEventIndicated,      // 46
+            Keyboard::KeypadNumLockAndClear, // 47
+            Keyboard::NoEventIndicated,      // 48
+            Keyboard::NoEventIndicated,      // 49
+            Keyboard::NoEventIndicated,      // 4a
+            Keyboard::KeypadDivide,          // 4b
+            Keyboard::KeypadEnter,           // 4c
+            Keyboard::NoEventIndicated,      // 4d
+            Keyboard::KeypadSubtract,        // 4e
+            Keyboard::F18,                   // 4f
+            Keyboard::F19,                   // 50
+            Keyboard::KeypadEqual,           // 51
+            Keyboard::Keypad0,               // 52
+            Keyboard::Keypad1,               // 53
+            Keyboard::Keypad2,               // 54
+            Keyboard::Keypad3,               // 55
+            Keyboard::Keypad4,               // 56
+            Keyboard::Keypad5,               // 57
+            Keyboard::Keypad6,               // 58
+            Keyboard::Keypad7,               // 59
+            Keyboard::F20,                   // 5a
+            Keyboard::Keypad8,               // 5b
+            Keyboard::Keypad9,               // 5c
+            Keyboard::Kanji3,                // 5d
+            Keyboard::Kanji1,                // 5e
+            Keyboard::KeypadComma,           // 5f
+            Keyboard::F5,                    // 60
+            Keyboard::F6,                    // 61
+            Keyboard::F7,                    // 62
+            Keyboard::F3,                    // 63
+            Keyboard::F8,                    // 64
+            Keyboard::F9,                    // 65
+            Keyboard::LANG2,                 // 66
+            Keyboard::F11,                   // 67
+            Keyboard::LANG1,                 // 68
+            Keyboard::F13,                   // 69
+            Keyboard::F16,                   // 6a
+            Keyboard::F14,                   // 6b
+            Keyboard::NoEventIndicated,      // 6c
+            Keyboard::F10,                   // 6d
+            Keyboard::Application,           // 6e
+            Keyboard::F12,                   // 6f
+            Keyboard::NoEventIndicated,      // 70
+            Keyboard::F15,                   // 71
+            Keyboard::Help,                  // 72
+            Keyboard::Home,                  // 73
+            Keyboard::PageUp,                // 74
+            Keyboard::DeleteForward,         // 75
+            Keyboard::F4,                    // 76
+            Keyboard::End,                   // 77
+            Keyboard::F2,                    // 78
+            Keyboard::PageDown,              // 79
+            Keyboard::F1,                    // 7a
+            Keyboard::RightShift,            // 7b
+            Keyboard::RightAlt,              // 7c
+            Keyboard::RightControl,          // 7d
+            Keyboard::UpArrow,               // 7e
+            Keyboard::Power,                 // 7f
         ];
 
         let keycode = lut[scan as usize];
