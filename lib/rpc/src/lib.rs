@@ -17,6 +17,7 @@ pub enum CallStatus {
     InvalidInput,
     InvalidOutput,
     InvalidParameter,
+    OperationFailed,
 }
 
 #[doc(hidden)]

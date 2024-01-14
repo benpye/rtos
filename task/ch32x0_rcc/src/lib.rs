@@ -59,7 +59,7 @@ impl rpc_ch32x0_rcc::Rcc<rpc::CallStatus> for RccServer<'_> {
                 Bus::Apb2 => Self::modify_reg(&self.rcc.apb2prstr, or_mask, and_mask),
                 Bus::Apb1 => Self::modify_reg(&self.rcc.apb1prstr, or_mask, and_mask),
                 Bus::Ahb => Self::modify_reg(&self.rcc.ahbrstr, or_mask, and_mask),
-                _ => {},
+                _ => {}
             }
         }
         Ok(())
@@ -85,7 +85,7 @@ impl rpc_ch32x0_rcc::Rcc<rpc::CallStatus> for RccServer<'_> {
                 Bus::Apb2 => Self::modify_reg(&self.rcc.apb2pcenr, or_mask, and_mask),
                 Bus::Apb1 => Self::modify_reg(&self.rcc.apb1pcenr, or_mask, and_mask),
                 Bus::Ahb => Self::modify_reg(&self.rcc.ahbpcenr, or_mask, and_mask),
-                _ => {},
+                _ => {}
             }
         }
         Ok(())

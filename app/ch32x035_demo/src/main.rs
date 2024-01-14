@@ -7,7 +7,6 @@ include!(concat!(env!("OUT_DIR"), "/app.rs"));
 
 #[export_name = "rtos.app_init"]
 extern "C" fn app_init() {
-    // let dp = unsafe { device::Peripherals::steal() };
     let rcc = unsafe { &*device::RCC::ptr() };
     let gpiob = unsafe { &*device::GPIOB::ptr() };
     let gpioc = unsafe { &*device::GPIOC::ptr() };

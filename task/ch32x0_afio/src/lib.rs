@@ -37,7 +37,16 @@ impl rpc::Notify for AfioServer<'_> {
 
 impl rpc_ch32x0_afio::Afio<rpc::CallStatus> for AfioServer<'_> {
     fn modify_ctlr(&mut self, value: u32, mask: u32) -> Result<(), rpc::CallStatus> {
-        assert_eq!(value, value & mask);
+        if (mask & rpc_ch32x0_afio::VALID_CTLR_MASK) != mask {
+            return Err(rpc::CallStatus::InvalidParameter);
+        }
+
+        if (value & mask) != value {
+            return Err(rpc::CallStatus::InvalidParameter);
+        }
+
+        // Safety; The mask is checked againt VALID_CTLR_MASK to ensure
+        // reserved bits are not modified.
         self.afio
             .ctlr
             .modify(|r, w| unsafe { w.bits((r.bits() & !mask) | value) });

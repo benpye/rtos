@@ -47,10 +47,10 @@ macro_rules! task_id {
     ($task_name:literal) => {{
         extern "C" {
             #[link_name = concat!(
-                            "rtos.constant.",
-                            $task_name,
-                            ".task_id"
-                        )]
+                                    "rtos.constant.",
+                                    $task_name,
+                                    ".task_id"
+                                )]
             static task_id: u8;
         }
         unsafe { task_id }

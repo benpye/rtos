@@ -23,12 +23,12 @@ members = [
     "sys/kernel_types",
 
     "task/adb_host",
+    "task/adb_usb_device",
     "task/ch32x0_afio",
     "task/ch32x0_rcc",
     "task/idle",
     "task/test_runner",
     "task/test_helper",
-    "task/usb_keyboard",
 
     "tools/rtos_app_build",
     "tools/rtos_llvm_plugin",
@@ -56,12 +56,12 @@ kernel = { path = "./sys/kernel", artifact = "staticlib", target = "target" }
 kernel_types = { path = "./sys/kernel_types" }
 
 adb_host = { path = "./task/adb_host", artifact = "staticlib", target = "target" }
+adb_usb_device = { path = "./task/adb_usb_device", artifact = "staticlib", target = "target" }
 ch32x0_afio = { path = "./task/ch32x0_afio", artifact = "staticlib", target = "target" }
 ch32x0_rcc = { path = "./task/ch32x0_rcc", artifact = "staticlib", target = "target" }
 idle = { path = "./task/idle", artifact = "staticlib", target = "target" }
 test_runner = { path = "./task/test_runner", artifact = "staticlib", target = "target" }
 test_helper = { path = "./task/test_helper", artifact = "staticlib", target = "target" }
-usb_keyboard = { path = "./task/usb_keyboard", artifact = "staticlib", target = "target" }
 
 rtos_app_build = { path = "./tools/rtos_app_build" }
 rtos_llvm_plugin = { path = "./tools/rtos_llvm_plugin", artifact = "cdylib" }
@@ -71,12 +71,15 @@ bitflags = "2.4.1"
 ch32x0 = "0.1.6"
 chiptool = { git = "https://github.com/benpye/chiptool.git" }
 critical-section = "1.1.2"
+either = "1.9.0"
+handlebars = "4.3.7"
 llvm-ir = { git = "https://github.com/trail-of-forks/llvm-ir.git", branch = "ww/llvm-16", features = [ "llvm-16" ] }
 llvm-plugin = { version = "0.4.1", features = [ "llvm16-0" ] }
 llvm-sys = { version = "160.1.2", features = [ "prefer-dynamic" ] }
 memoffset = "0.9"
 open-enum = "0.4.0"
 paste = "1.0.14"
+petgraph = "0.6.4"
 prettyplease = "0.2.15"
 proc-macro2 = "1.0.69"
 quote = "1.0.33"
@@ -86,9 +89,13 @@ seq-macro = "0.3.5"
 serde = { version = "1.0.189", features = [ "derive" ] }
 serde_json = "1.0.107"
 serde_yaml = "0.9.25"
+stack-sizes = "0.5.0"
 syn = "2.0.38"
+toml = "0.7.6"
 usb-device = "0.2.9"
+usbd-human-interface-device = "0.4.3"
 vcell = "0.1.3"
+xshell = "0.2.5"
 zerocopy = { version = "0.7.11", features = [ "derive" ] }
 
 [profile.dev]

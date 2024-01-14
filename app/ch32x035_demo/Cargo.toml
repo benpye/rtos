@@ -16,7 +16,7 @@ rtos_llvm_plugin.workspace = true
 kernel = { workspace = true, features = [ "family_wch_v4c", "num_tasks_5" ] }
 adb_host.workspace = true
 idle.workspace = true
-usb_keyboard.workspace = true
+adb_usb_device.workspace = true
 ch32x0_afio.workspace = true
 ch32x0_rcc.workspace = true
 

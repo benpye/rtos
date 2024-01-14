@@ -29,7 +29,7 @@ priority = 1
 memory = { data = 0, stack = 1024 }
 peripherals = [ "gpioa" ]
 
-[tasks.usb_keyboard]
+[tasks.adb_usb_device]
 boot = true
 priority = 0
 memory = { data = 260, stack = 1788 }

@@ -17,6 +17,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "adb_usb_device"
+version = "0.1.0"
+dependencies = [
+ "ch32x0",
+ "ch32x035_usb",
+ "kernel_types",
+ "rpc_adb_host",
+ "rpc_ch32x0_afio",
+ "rpc_ch32x0_rcc",
+ "rtos_macros",
+ "spin 0.1.0",
+ "syscall",
+ "usb-device",
+ "usbd-human-interface-device",
+ "vcell",
+]
+
+[[package]]
 name = "aho-corasick"
 version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -166,6 +184,7 @@ name = "ch32x035_demo"
 version = "0.1.0"
 dependencies = [
  "adb_host",
+ "adb_usb_device",
  "ch32x0",
  "ch32x0_afio",
  "ch32x0_rcc",
@@ -175,7 +194,6 @@ dependencies = [
  "rtos_app_build",
  "rtos_llvm_plugin",
  "rtos_macros",
- "usb_keyboard",
 ]
 
 [[package]]
@@ -375,6 +393,12 @@ name = "equivalent"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5443807d6dff69373d433ab9ef5378ad8df50ca6298caf15de6e52e24aaf54d5"
+
+[[package]]
+name = "fixedbitset"
+version = "0.4.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0ce7134b9999ecaf8bcd65542e436736ef32ddca1b3e06094cb6ec5755203b80"
 
 [[package]]
 name = "frunk"
@@ -877,6 +901,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "petgraph"
+version = "0.6.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e1d3afd2628e69da2be385eb6f2fd57c8ac7977ceeff6dc166ff1657b0e386a9"
+dependencies = [
+ "fixedbitset",
+ "indexmap",
+]
+
+[[package]]
 name = "prettyplease"
 version = "0.2.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1001,7 +1035,9 @@ dependencies = [
 name = "rpc_ch32x0_afio"
 version = "0.1.0"
 dependencies = [
+ "open-enum",
  "rpc",
+ "zerocopy",
 ]
 
 [[package]]
@@ -1203,8 +1239,10 @@ dependencies = [
 name = "stack_analyzer"
 version = "0.1.0"
 dependencies = [
+ "either",
  "llvm-ir",
  "llvm-sys",
+ "petgraph",
  "stack-sizes",
 ]
 
@@ -1382,24 +1420,6 @@ name = "usb-device"
 version = "0.2.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1f6cc3adc849b5292b4075fc0d5fdcf2f24866e88e336dd27a8943090a520508"
-
-[[package]]
-name = "usb_keyboard"
-version = "0.1.0"
-dependencies = [
- "ch32x0",
- "ch32x035_usb",
- "kernel_types",
- "rpc_adb_host",
- "rpc_ch32x0_afio",
- "rpc_ch32x0_rcc",
- "rtos_macros",
- "spin 0.1.0",
- "syscall",
- "usb-device",
- "usbd-human-interface-device",
- "vcell",
-]
 
 [[package]]
 name = "usbd-human-interface-device"

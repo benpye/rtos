@@ -6,14 +6,14 @@ edition = "2021"
 [lib]
 
 [dependencies]
-handlebars = { version = "4.3.7", features = [ "dir_source" ] }
-prettyplease = "0.2.12"
+handlebars = { workspace = true, features = [ "dir_source" ] }
+prettyplease.workspace = true
 quote.workspace = true
 proc-macro2.workspace = true
 serde = { workspace = true, features = ["derive"] }
-syn = { version = "2.0.27" }
-toml = "0.7.6"
-xshell = "0.2.5"
+syn.workspace = true
+toml.workspace = true
+xshell.workspace = true
 
 [lints]
 workspace = true
